@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FYP_UOS_2022Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Examcell">
+          <Key>
+            <PropertyRef Name="Examcell_id" />
+          </Key>
+          <Property Name="Examcell_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Examcell_Uniqueid" Type="nvarchar" MaxLength="50" />
+          <Property Name="Examcellpassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Examcell_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PMO">
+          <Key>
+            <PropertyRef Name="PMO_id" />
+          </Key>
+          <Property Name="PMO_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PMO_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PMO_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PMO_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_id" />
+          </Key>
+          <Property Name="Student_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Student_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Supersisor_Fid" Type="int" />
+        </EntityType>
+        <EntityType Name="Supervisor">
+          <Key>
+            <PropertyRef Name="Supervisor_id" />
+          </Key>
+          <Property Name="Supervisor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Supervisor_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Supervisor_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Supervisor_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PMO_FID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Student_Supervisor">
+          <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supervisor">
+              <PropertyRef Name="Supervisor_id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Supersisor_Fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supervisor_PMO">
+          <End Role="PMO" Type="Self.PMO" Multiplicity="0..1" />
+          <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PMO">
+              <PropertyRef Name="PMO_id" />
+            </Principal>
+            <Dependent Role="Supervisor">
+              <PropertyRef Name="PMO_FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FYP_UOS_2022ModelStoreContainer">
+          <EntitySet Name="Examcell" EntityType="Self.Examcell" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PMO" EntityType="Self.PMO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supervisor" EntityType="Self.Supervisor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Student_Supervisor" Association="Self.FK_Student_Supervisor">
+            <End Role="Supervisor" EntitySet="Supervisor" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supervisor_PMO" Association="Self.FK_Supervisor_PMO">
+            <End Role="PMO" EntitySet="PMO" />
+            <End Role="Supervisor" EntitySet="Supervisor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FYP_UOS_2022Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Examcell">
+          <Key>
+            <PropertyRef Name="Examcell_id" />
+          </Key>
+          <Property Name="Examcell_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Examcell_Uniqueid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Examcellpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Examcell_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          </EntityType>
+        <EntityType Name="PMO">
+          <Key>
+            <PropertyRef Name="PMO_id" />
+          </Key>
+          <Property Name="PMO_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PMO_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PMO_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PMO_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Supervisors" Relationship="Self.FK_Supervisor_PMO" FromRole="PMO" ToRole="Supervisor" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_id" />
+          </Key>
+          <Property Name="Student_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Student_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Student_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Supersisor_Fid" Type="Int32" />
+          <NavigationProperty Name="Supervisor" Relationship="Self.FK_Student_Supervisor" FromRole="Student" ToRole="Supervisor" />
+        </EntityType>
+        <EntityType Name="Supervisor">
+          <Key>
+            <PropertyRef Name="Supervisor_id" />
+          </Key>
+          <Property Name="Supervisor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Supervisor_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Supervisor_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Supervisor_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PMO_FID" Type="Int32" />
+          <NavigationProperty Name="PMO" Relationship="Self.FK_Supervisor_PMO" FromRole="Supervisor" ToRole="PMO" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_Supervisor" FromRole="Supervisor" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK_Supervisor_PMO">
+          <End Role="PMO" Type="Self.PMO" Multiplicity="0..1" />
+          <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PMO">
+              <PropertyRef Name="PMO_id" />
+            </Principal>
+            <Dependent Role="Supervisor">
+              <PropertyRef Name="PMO_FID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Supervisor">
+          <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supervisor">
+              <PropertyRef Name="Supervisor_id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Supersisor_Fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Db_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Examcells" EntityType="Self.Examcell" />
+          <EntitySet Name="PMOes" EntityType="Self.PMO" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Supervisors" EntityType="Self.Supervisor" />
+          <AssociationSet Name="FK_Supervisor_PMO" Association="Self.FK_Supervisor_PMO">
+            <End Role="PMO" EntitySet="PMOes" />
+            <End Role="Supervisor" EntitySet="Supervisors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Supervisor" Association="Self.FK_Student_Supervisor">
+            <End Role="Supervisor" EntitySet="Supervisors" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FYP_UOS_2022ModelStoreContainer" CdmEntityContainer="Db_Entities">
+          <EntitySetMapping Name="Examcells">
+            <EntityTypeMapping TypeName="FYP_UOS_2022Model.Examcell">
+              <MappingFragment StoreEntitySet="Examcell">
+                <ScalarProperty Name="Examcell_id" ColumnName="Examcell_id" />
+                <ScalarProperty Name="Examcell_Uniqueid" ColumnName="Examcell_Uniqueid" />
+                <ScalarProperty Name="Examcellpassword" ColumnName="Examcellpassword" />
+                <ScalarProperty Name="Examcell_Email" ColumnName="Examcell_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PMOes">
+            <EntityTypeMapping TypeName="FYP_UOS_2022Model.PMO">
+              <MappingFragment StoreEntitySet="PMO">
+                <ScalarProperty Name="PMO_id" ColumnName="PMO_id" />
+                <ScalarProperty Name="PMO_Name" ColumnName="PMO_Name" />
+                <ScalarProperty Name="PMO_Email" ColumnName="PMO_Email" />
+                <ScalarProperty Name="PMO_password" ColumnName="PMO_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="FYP_UOS_2022Model.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+                <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+                <ScalarProperty Name="Student_Email" ColumnName="Student_Email" />
+                <ScalarProperty Name="Student_Password" ColumnName="Student_Password" />
+                <ScalarProperty Name="Supersisor_Fid" ColumnName="Supersisor_Fid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supervisors">
+            <EntityTypeMapping TypeName="FYP_UOS_2022Model.Supervisor">
+              <MappingFragment StoreEntitySet="Supervisor">
+                <ScalarProperty Name="Supervisor_id" ColumnName="Supervisor_id" />
+                <ScalarProperty Name="Supervisor_Name" ColumnName="Supervisor_Name" />
+                <ScalarProperty Name="Supervisor_Email" ColumnName="Supervisor_Email" />
+                <ScalarProperty Name="Supervisor_Password" ColumnName="Supervisor_Password" />
+                <ScalarProperty Name="PMO_FID" ColumnName="PMO_FID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

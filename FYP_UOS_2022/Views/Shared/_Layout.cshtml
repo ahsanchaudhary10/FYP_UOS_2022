@@ -1,0 +1,306 @@
+﻿@using FYP_UOS_2022.Models
+@{
+   // Servrce_provider_android_appEntities db = new Servrce_provider_android_appEntities();
+    //var user = new Admin();
+    //if (CurrentUser.admin == null)
+    //{
+    //    Response.Redirect("/Home/Signin");
+    //    return;
+    //}
+    //        else
+    //        {
+    //            user=CurrentUser.admin;
+
+    //        }
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+
+    <title>Sefi Services </title>
+
+    <!-- Favicons -->
+    <link href="~/favicon.ico" rel="icon">
+    <link href="~/content/Admin/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/content/Admin/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="~/content/Admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/content/Admin/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="~/content/Admin/lib/gritter/css/jquery.gritter.css" />
+    <!-- Custom styles for this template -->
+    <link href="~/content/Admin/css/style.css" rel="stylesheet">
+    <link href="~/content/Admin/css/style-responsive.css" rel="stylesheet">
+    <script src="~/content/Admin/lib/chart-master/Chart.js"></script>
+
+    <!-- =======================================================
+      Template Name: Dashio
+      Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+      Author: TemplateMag.com
+      License: https://templatemag.com/license/
+    ======================================================= -->
+</head>
+
+<body>
+    <section id="container">
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <!--logo start-->
+            <a class="logo"><b>Sefi <span> Service</span></b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a href="/home/BookedOrders">
+                            <i class="fa fa-tasks"></i>
+                            <span class="badge bg-theme"></span>
+                        </a>
+
+                    </li>
+                    <!-- settings end -->
+                    <!-- inbox dropdown start-->
+                    <li id="header_inbox_bar" class="dropdown">
+                        <a href="/contactsmvc/todaymsg">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-theme"></span>
+                        </a>
+
+                    </li>
+                    <!-- inbox dropdown end -->
+                    <!-- notification dropdown start-->
+                    <!-- notification dropdown end -->
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="/home/logout">Logout</a></li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered"><a href=""><img src="~/content/Admin/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+                    <h5 class="centered">Admin</h5>
+                    <li class="mt">
+                        <a class="" href="/home/index">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","Admins")">
+                            <i class="fa fa-desktop"></i>
+                            <span>Manage Admins</span>
+                        </a>
+
+                    </li>
+
+                    <li class="">
+                        <a href="@Url.Action("Index","AppUsersmvc")">
+                            <i class="fa fa-desktop"></i>
+                            <span>App Users</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","Employees")">
+                            <i class="fa fa-desktop"></i>
+                            <span>Manage Made/Drivers</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","Coupansmvc")">
+                            <i class="fa fa-cogs"></i>
+                            <span>Manage Coupans</span>
+                        </a>
+
+                    </li>
+                    @*<li class="">
+                            <a href="@Url.Action("Index","Reviewsmvc")">
+                                <i class="fa fa-cogs"></i>
+                                <span>Manage Reviews</span>
+                            </a>
+
+                        </li>*@
+                    <li class="">
+                        <a href="@Url.Action("index","Contactsmvc")">
+                            <i class="fa fa-cogs"></i>
+                            <span>Messages</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("BookedOrders","Home")">
+                            <i class="fa fa-cogs"></i>
+                            <span>New Orders</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("ReleasedOrdersmvc","Home")">
+                            <i class="fa fa-cogs"></i>
+                            <span> Released Orders</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("PendingAssigntask","AssignTask")">
+                            <i class="fa fa-cogs"></i>
+                            <span>Pending Assign Task</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("CanceledOrders","Home")">
+                            <i class="fa fa-cogs"></i>
+                            <span>Canceled Orders</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("ProceedOrders","Home")">
+                            <i class="fa fa-cogs"></i>
+                            <span>Proceed Orders</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Orders","Home")">
+                            <i class="fa fa-cogs"></i>
+                            <span>Complete Orders</span>
+                        </a>
+
+                    </li>
+                    @*<li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-book"></i>
+                                <span>Reports</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="/reports/salereport">Sale Report</a></li>
+                                <li><a href="/reports/purhcaseReport">Purchase Report</a></li>
+                                <li><a href="/reports/Stock">Stock Report</a></li>
+                                <li><a href="/reports/profitandloss">Profit & Loss Report</a></li>
+                                <li><a href="/reports/return">Order Return Report</a></li>
+
+                            </ul>
+                        </li>*@
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+        <section id="main-content">
+            <section class="wrapper">
+                @RenderBody()
+            </section>
+        </section>
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                <p>
+                    &copy; Copyrights <strong>Sefi Services</strong>. All Rights Reserved
+                </p>
+                <div class="credits">
+                    <!--
+                      You are NOT allowed to delete the credit link to TemplateMag with free version.
+                      You can delete the credit link only if you bought the pro version.
+                      Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+                      Licensing information: https://templatemag.com/license/
+                    -->
+                    Created By Muhammad Ahsan ahsanchaudary10@gmail.com
+                </div>
+                <a href="" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+    <!-- js placed at the end of the document so the pages load faster -->
+    @RenderSection("script", required: false)
+    <script src="~/content/Admin/lib/jquery/jquery.min.js"></script>
+
+    <script src="~/content/Admin/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="~/content/Admin/lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/content/Admin/lib/jquery.scrollTo.min.js"></script>
+    <script src="~/content/Admin/lib/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="~/content/Admin/lib/jquery.sparkline.js"></script>
+    <!--common script for all pages-->
+    <script src="~/content/Admin/lib/common-scripts.js"></script>
+    <script type="text/javascript" src="~/content/Admin/lib/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="~/content/Admin/lib/gritter-conf.js"></script>
+    <!--script for this page-->
+    <script src="~/content/Admin/lib/sparkline-chart.js"></script>
+    <script src="~/content/Admin/lib/zabuto_calendar.js"></script>
+
+    <script type="application/javascript">
+        $(document).ready(function() {
+          $("#date-popover").popover({
+            html: true,
+            trigger: "manual"
+          });
+          $("#date-popover").hide();
+          $("#date-popover").click(function(e) {
+            $(this).hide();
+          });
+
+          $("#my-calendar").zabuto_calendar({
+            action: function() {
+              return myDateFunction(this.id, false);
+            },
+            action_nav: function() {
+              return myNavFunction(this.id);
+            },
+            ajax: {
+              url: "show_data.php?action=1",
+              modal: true
+            },
+            legend: [{
+                type: "text",
+                label: "Special event",
+                badge: "00"
+              },
+              {
+                type: "block",
+                label: "Regular event",
+              }
+            ]
+          });
+        });
+
+        function myNavFunction(id) {
+          $("#date-popover").hide();
+          var nav = $("#" + id).data("navigation");
+          var to = $("#" + id).data("to");
+          console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    </script>
+    @RenderSection("Scripts", false)
+</body>
+
+</html>

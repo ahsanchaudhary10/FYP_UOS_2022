@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FYP_UOS_2022.Models.Examcell>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Examcell_Uniqueid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Examcellpassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Examcell_Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Examcell_Uniqueid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Examcellpassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Examcell_Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Examcell_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Examcell_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Examcell_id })
+        </td>
+    </tr>
+}
+
+</table>

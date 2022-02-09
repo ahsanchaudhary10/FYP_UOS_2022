@@ -1,0 +1,70 @@
+
+@{
+Layout="";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  
+  <title>FYP UOS</title>
+
+  <!-- Favicons -->
+  <link href="~/favicon.ico" rel="icon">
+  <link href="~/content/admin/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="~/content/admin/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="~/content/admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="~/content/admin/css/style.css" rel="stylesheet">
+  <link href="~/content/admin/css/style-responsive.css" rel="stylesheet">
+  
+</head>
+
+<body>
+  <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+  <div id="login-page">
+    <div class="container">
+        <h1 class="text-center"> SupervisorSignin Login</h1>
+      <form class="form-login"  action="/home/SupervisorSignin" method="post">
+        <h2 class="form-login-heading">sign in now</h2>
+        <div class="login-wrap">
+          <input type="text" required class="form-control" name="Supervisor_Email" placeholder="User ID" autofocus>
+          <br>
+          <input type="password" required class="form-control" name="Supervisor_Password" placeholder="Password">
+         
+            <label style="margin-left:20px" class="text-danger">
+                @ViewBag.error
+            </label>
+          <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+          <hr>
+          
+        </div>
+        <!-- Modal -->
+        
+        <!-- modal -->
+      </form>
+    </div>
+  </div>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <!--BACKSTRETCH-->
+  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+  <script type="text/javascript" src="lib/jquery.backstretch.min.js"></script>
+  <!--<script>
+    $.backstretch("img/login-bg.jpg", {
+      speed: 500
+    });
+  </script>-->
+</body>
+
+</html>

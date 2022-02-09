@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FYP_UOS_2022.Models.PMO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PMO_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PMO_Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PMO_password)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PMO_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PMO_Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PMO_password)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PMO_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PMO_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PMO_id })
+        </td>
+    </tr>
+}
+
+</table>

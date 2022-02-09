@@ -1,0 +1,42 @@
+﻿@model FYP_UOS_2022.Models.PMO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PMO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PMO_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PMO_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PMO_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PMO_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PMO_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PMO_password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PMO_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
