@@ -23,7 +23,7 @@ namespace FYP_UOS_2022.Controllers
         [HttpPost]
         public ActionResult ExamSignin(Examcell ec)
         {
-            var result = db.Examcells.Where(x => x.Examcell_id == ec.Examcell_id && x.Examcellpassword == ec.Examcellpassword).FirstOrDefault();
+            var result = db.Examcells.Where(x => x.Examcell_Uniqueid == ec.Examcell_Uniqueid && x.Examcellpassword == ec.Examcellpassword).FirstOrDefault();
             if (result != null)
             {
                 BaseHelper.CurrentExamCell = result;
