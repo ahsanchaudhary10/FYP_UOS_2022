@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FYP_UOS_2022.Models.Supervisor>
+
+@{
+    ViewBag.Title = "SelectSupervisor";
+}
+
+<h2>Supervisor Group</h2>
+@Html.Raw(TempData["msg"])
+
+<table class="table" id="myTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Supervisor_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supervisor_Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supervisor_Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PMO.PMO_Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supervisor_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supervisor_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supervisor_Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PMO.PMO_Name)
+            </td>
+            <td>
+                <a class="btn btn-primary" href="@Url.Action("StudentsGroups","PMOlink",new { id=item.Supervisor_id})">Select</a>
+            </td>
+        </tr>
+    }
+
+</table>

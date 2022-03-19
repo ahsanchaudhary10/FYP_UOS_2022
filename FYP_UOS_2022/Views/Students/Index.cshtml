@@ -21,8 +21,9 @@
             @Html.DisplayNameFor(model => model.Student_Password)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Supervisor.Supervisor_Name)
+            @Html.DisplayNameFor(model => model.Class.Class_Name)
         </th>
+        
         <th></th>
     </tr>
 
@@ -38,8 +39,9 @@
             @Html.DisplayFor(modelItem => item.Student_Password)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Supervisor.Supervisor_Name)
+            @Html.DisplayFor(modelItem => item.Class.Class_Name)
         </td>
+       
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Student_id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Student_id }) |

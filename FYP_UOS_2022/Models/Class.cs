@@ -12,16 +12,18 @@ namespace FYP_UOS_2022.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Class
     {
-        public int Student_id { get; set; }
-        public string Student_Name { get; set; }
-        public string Student_Email { get; set; }
-        public string Student_Password { get; set; }
-        public Nullable<int> Clas_fid { get; set; }
-        public Nullable<int> Group_fid { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Class()
+        {
+            this.Students = new HashSet<Student>();
+        }
     
-        public virtual Class Class { get; set; }
-        public virtual Group Group { get; set; }
+        public int id { get; set; }
+        public string Class_Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

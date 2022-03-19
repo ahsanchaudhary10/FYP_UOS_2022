@@ -40,12 +40,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Supersisor_Fid, "Supersisor_Fid", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Clas_fid, "Clas_fid", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Supersisor_Fid", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Supersisor_Fid, "", new { @class = "text-danger" })
+                @Html.DropDownList("Clas_fid", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Clas_fid, "", new { @class = "text-danger" })
             </div>
         </div>
+
+       
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

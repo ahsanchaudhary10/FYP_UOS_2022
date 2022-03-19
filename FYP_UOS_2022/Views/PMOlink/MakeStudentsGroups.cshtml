@@ -1,0 +1,101 @@
+﻿@model IEnumerable<FYP_UOS_2022.Models.Student>
+    @using FYP_UOS_2022.Models
+
+@{
+    ViewBag.Title = "MakeStudentsGroups";
+    Db_Entities db = new Db_Entities();
+}
+
+<h2>MakeStudentsGroups</h2>
+
+<p>
+    <select class="form-control" onchange="document.location.href = '/PMOlink/MakeStudentsGroups?classid' + this.options[this.selectedIndex].value;">
+      <option>---------------Select Class----------</option>
+        @foreach (var item in db.Classes)
+        {
+
+            <option value="=@item.id"> @item.Class_Name</option>
+        }
+
+    </select>
+</p>
+<h1>@ViewBag.msg</h1>
+
+<table class="table">
+    <tr>
+        <th id="std">
+            @Html.DisplayNameFor(model => model.Student_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class.Class_Name)
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Where(x => x.Group_fid == null))
+    {
+        <tr id="stdlist">
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class.Class_Name)
+            </td>
+            
+            <td id="box">
+                <input value="@item.Student_id" type="checkbox" id="check" />
+            </td>
+        </tr>
+
+    }
+
+</table>
+@if(Model.Count() > 0) { 
+
+<button onclick="myfunc()" class="btn btn-primary">Assign</button>
+}
+<script>
+    function myfunc() {
+        var id = [];
+        var count = 0;
+        var list = document.querySelectorAll('#stdlist #check');
+        var maid = document.querySelectorAll('#std');
+        var tmaid = maid[0].outerText;
+        for (var i = 0; i < list.length; i++) {
+            if (list[i].checked) {
+                id[i] = list[i].value;
+                count++;
+            }
+
+        }
+        id = id.filter(x => x !== null);
+        if (count > 3 || count == 0) {
+            alert("You Select Max 3 Student");
+            return;
+        }
+
+        var converjson = JSON.stringify(id);
+        var data = converjson //if you want to pass an Id parameter
+        window.location.href = '/PMOlink/MakeGroup/?data=' + data;
+        console.log(maid);
+    }
+</script>

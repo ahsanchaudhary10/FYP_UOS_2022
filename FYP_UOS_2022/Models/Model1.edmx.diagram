@@ -10,7 +10,15 @@
         <EntityTypeShape EntityType="FYP_UOS_2022Model.Student" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="FYP_UOS_2022Model.Supervisor" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="FYP_UOS_2022Model.FK_Supervisor_PMO" ManuallyRouted="false" />
-        <AssociationConnector Association="FYP_UOS_2022Model.FK_Student_Supervisor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FYP_UOS_2022Model.Class" Width="1.5" PointX="7.375" PointY="0.875" />
+        <EntityTypeShape EntityType="FYP_UOS_2022Model.Group" Width="1.5" PointX="3.375" PointY="5.375" />
+        <EntityTypeShape EntityType="FYP_UOS_2022Model.Student_Task" Width="1.5" PointX="5.625" PointY="5" />
+        <EntityTypeShape EntityType="FYP_UOS_2022Model.Task_Data" Width="1.5" PointX="7.875" PointY="5.375" />
+        <AssociationConnector Association="FYP_UOS_2022Model.FK_Student_Class" />
+        <AssociationConnector Association="FYP_UOS_2022Model.FK_Student_Task_Group" />
+        <AssociationConnector Association="FYP_UOS_2022Model.FK_Task_Data_Student_Task" />
+        <AssociationConnector Association="FYP_UOS_2022Model.FK_Student_Group" />
+        <AssociationConnector Association="FYP_UOS_2022Model.FK_Group_Supervisor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

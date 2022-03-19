@@ -29,5 +29,9 @@ namespace FYP_UOS_2022.Models
         public virtual DbSet<PMO> PMOes { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Supervisor> Supervisors { get; set; }
+        public virtual DbSet<Class> Classes { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Student_Task> Student_Task { get; set; }
+        public virtual DbSet<Task_Data> Task_Data { get; set; }
     }
 }

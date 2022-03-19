@@ -12,16 +12,12 @@ namespace FYP_UOS_2022.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Task_Data
     {
-        public int Student_id { get; set; }
-        public string Student_Name { get; set; }
-        public string Student_Email { get; set; }
-        public string Student_Password { get; set; }
-        public Nullable<int> Clas_fid { get; set; }
-        public Nullable<int> Group_fid { get; set; }
+        public int id { get; set; }
+        public string TaskData { get; set; }
+        public int Task_fid { get; set; }
     
-        public virtual Class Class { get; set; }
-        public virtual Group Group { get; set; }
+        public virtual Student_Task Student_Task { get; set; }
     }
 }

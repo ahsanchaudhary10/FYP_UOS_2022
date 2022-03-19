@@ -49,6 +49,16 @@ namespace FYP_UOS_2022.Controllers
             ViewBag.error = "Invalid ID And Passowrd";
             return View();
         }
+        public ActionResult PMOIndex()
+        {
+
+            return View();
+        }
+        public ActionResult SuperVisorIndex()
+        {
+
+            return View();
+        }
         public ActionResult SupervisorSignin()
         {
 

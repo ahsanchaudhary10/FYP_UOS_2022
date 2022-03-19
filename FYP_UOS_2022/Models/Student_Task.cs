@@ -12,22 +12,23 @@ namespace FYP_UOS_2022.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Supervisor
+    public partial class Student_Task
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Supervisor()
+        public Student_Task()
         {
-            this.Groups = new HashSet<Group>();
+            this.Task_Data = new HashSet<Task_Data>();
         }
     
-        public int Supervisor_id { get; set; }
-        public string Supervisor_Name { get; set; }
-        public string Supervisor_Email { get; set; }
-        public string Supervisor_Password { get; set; }
-        public Nullable<int> PMO_FID { get; set; }
+        public int Task_id { get; set; }
+        public string Task_Name { get; set; }
+        public System.DateTime Task_start_date { get; set; }
+        public System.DateTime Task_end_Date { get; set; }
+        public bool Task_status { get; set; }
+        public int Group_fid { get; set; }
     
-        public virtual PMO PMO { get; set; }
+        public virtual Group Group { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Group> Groups { get; set; }
+        public virtual ICollection<Task_Data> Task_Data { get; set; }
     }
 }
