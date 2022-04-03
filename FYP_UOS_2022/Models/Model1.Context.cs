@@ -33,5 +33,6 @@ namespace FYP_UOS_2022.Models
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Student_Task> Student_Task { get; set; }
         public virtual DbSet<Task_Data> Task_Data { get; set; }
+        public virtual DbSet<Task_Assign> Task_Assign { get; set; }
     }
 }

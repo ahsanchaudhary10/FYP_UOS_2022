@@ -1,0 +1,58 @@
+﻿@model IEnumerable<FYP_UOS_2022.Models.Student_Task>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.Raw(TempData["msg"])
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Task_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Task_start_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Task_end_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Task_status)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Task_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Task_start_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Task_end_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Task_status)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Task_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Task_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Task_id })
+        </td>
+        <td>
+            <a class="btn btn-primary" href="@Url.Action("AssignTask","SupervisorLink",new { id=item.Task_id})">Assign Task</a>
+
+
+        </td>
+    </tr>
+}
+
+</table>

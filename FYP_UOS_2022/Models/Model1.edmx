@@ -58,7 +58,6 @@
           <Property Name="Task_start_date" Type="datetime" Nullable="false" />
           <Property Name="Task_end_Date" Type="datetime" Nullable="false" />
           <Property Name="Task_status" Type="bit" Nullable="false" />
-          <Property Name="Group_fid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Supervisor">
           <Key>
@@ -70,13 +69,23 @@
           <Property Name="Supervisor_Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PMO_FID" Type="int" />
         </EntityType>
+        <EntityType Name="Task_Assign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Group_fid" Type="int" Nullable="false" />
+          <Property Name="Task_fid" Type="int" Nullable="false" />
+          <Property Name="Assign_Date" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Task_Data">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="TaskData" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Task_fid" Type="int" Nullable="false" />
+          <Property Name="Taskassign_fid" Type="int" Nullable="false" />
+          <Property Name="Submit_Date" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_Group_Supervisor">
           <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="1" />
@@ -114,18 +123,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Student_Task_Group">
-          <End Role="Group" Type="Self.Group" Multiplicity="1" />
-          <End Role="Student_Task" Type="Self.Student_Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Group">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Student_Task">
-              <PropertyRef Name="Group_fid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Supervisor_PMO">
           <End Role="PMO" Type="Self.PMO" Multiplicity="0..1" />
           <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="*" />
@@ -138,15 +135,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Task_Data_Student_Task">
+        <Association Name="FK_Task_Assign_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Task_Assign" Type="Self.Task_Assign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Task_Assign">
+              <PropertyRef Name="Group_fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Assign_Student_Task">
           <End Role="Student_Task" Type="Self.Student_Task" Multiplicity="1" />
-          <End Role="Task_Data" Type="Self.Task_Data" Multiplicity="*" />
+          <End Role="Task_Assign" Type="Self.Task_Assign" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Student_Task">
               <PropertyRef Name="Task_id" />
             </Principal>
-            <Dependent Role="Task_Data">
+            <Dependent Role="Task_Assign">
               <PropertyRef Name="Task_fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Data_Student_Task">
+          <End Role="Task_Assign" Type="Self.Task_Assign" Multiplicity="1" />
+          <End Role="Task_Data" Type="Self.Task_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task_Assign">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Task_Data">
+              <PropertyRef Name="Taskassign_fid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -158,6 +179,7 @@
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student_Task" EntityType="Self.Student_Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supervisor" EntityType="Self.Supervisor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task_Assign" EntityType="Self.Task_Assign" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task_Data" EntityType="Self.Task_Data" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Group_Supervisor" Association="Self.FK_Group_Supervisor">
             <End Role="Supervisor" EntitySet="Supervisor" />
@@ -171,16 +193,20 @@
             <End Role="Group" EntitySet="Group" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
-          <AssociationSet Name="FK_Student_Task_Group" Association="Self.FK_Student_Task_Group">
-            <End Role="Group" EntitySet="Group" />
-            <End Role="Student_Task" EntitySet="Student_Task" />
-          </AssociationSet>
           <AssociationSet Name="FK_Supervisor_PMO" Association="Self.FK_Supervisor_PMO">
             <End Role="PMO" EntitySet="PMO" />
             <End Role="Supervisor" EntitySet="Supervisor" />
           </AssociationSet>
-          <AssociationSet Name="FK_Task_Data_Student_Task" Association="Self.FK_Task_Data_Student_Task">
+          <AssociationSet Name="FK_Task_Assign_Group" Association="Self.FK_Task_Assign_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Task_Assign" EntitySet="Task_Assign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Assign_Student_Task" Association="Self.FK_Task_Assign_Student_Task">
             <End Role="Student_Task" EntitySet="Student_Task" />
+            <End Role="Task_Assign" EntitySet="Task_Assign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Data_Student_Task" Association="Self.FK_Task_Data_Student_Task">
+            <End Role="Task_Assign" EntitySet="Task_Assign" />
             <End Role="Task_Data" EntitySet="Task_Data" />
           </AssociationSet>
         </EntityContainer>
@@ -261,14 +287,6 @@
             <End Role="Class" EntitySet="Classes" />
             <End Role="Student" EntitySet="Students" />
           </AssociationSet>
-          <AssociationSet Name="FK_Student_Task_Group" Association="FYP_UOS_2022Model.FK_Student_Task_Group">
-            <End Role="Group" EntitySet="Groups" />
-            <End Role="Student_Task" EntitySet="Student_Task" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Task_Data_Student_Task" Association="FYP_UOS_2022Model.FK_Task_Data_Student_Task">
-            <End Role="Student_Task" EntitySet="Student_Task" />
-            <End Role="Task_Data" EntitySet="Task_Data" />
-          </AssociationSet>
           <AssociationSet Name="FK_Student_Group" Association="FYP_UOS_2022Model.FK_Student_Group">
             <End Role="Group" EntitySet="Groups" />
             <End Role="Student" EntitySet="Students" />
@@ -276,6 +294,19 @@
           <AssociationSet Name="FK_Group_Supervisor" Association="FYP_UOS_2022Model.FK_Group_Supervisor">
             <End Role="Supervisor" EntitySet="Supervisors" />
             <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <EntitySet Name="Task_Assign" EntityType="FYP_UOS_2022Model.Task_Assign" />
+          <AssociationSet Name="FK_Task_Assign_Group" Association="FYP_UOS_2022Model.FK_Task_Assign_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Task_Assign" EntitySet="Task_Assign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Data_Student_Task1" Association="FYP_UOS_2022Model.FK_Task_Data_Student_Task1">
+            <End Role="Task_Assign" EntitySet="Task_Assign" />
+            <End Role="Task_Data" EntitySet="Task_Data" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Assign_Student_Task1" Association="FYP_UOS_2022Model.FK_Task_Assign_Student_Task1">
+            <End Role="Student_Task" EntitySet="Student_Task" />
+            <End Role="Task_Assign" EntitySet="Task_Assign" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Class">
@@ -293,9 +324,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Group_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="supervisor_fid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Student_Task" Relationship="FYP_UOS_2022Model.FK_Student_Task_Group" FromRole="Group" ToRole="Student_Task" />
           <NavigationProperty Name="Students" Relationship="FYP_UOS_2022Model.FK_Student_Group" FromRole="Group" ToRole="Student" />
           <NavigationProperty Name="Supervisor" Relationship="FYP_UOS_2022Model.FK_Group_Supervisor" FromRole="Group" ToRole="Supervisor" />
+          <NavigationProperty Name="Task_Assign" Relationship="FYP_UOS_2022Model.FK_Task_Assign_Group" FromRole="Group" ToRole="Task_Assign" />
         </EntityType>
         <EntityType Name="Student_Task">
           <Key>
@@ -306,9 +337,7 @@
           <Property Name="Task_start_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Task_end_Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Task_status" Type="Boolean" Nullable="false" />
-          <Property Name="Group_fid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Group" Relationship="FYP_UOS_2022Model.FK_Student_Task_Group" FromRole="Student_Task" ToRole="Group" />
-          <NavigationProperty Name="Task_Data" Relationship="FYP_UOS_2022Model.FK_Task_Data_Student_Task" FromRole="Student_Task" ToRole="Task_Data" />
+          <NavigationProperty Name="Task_Assign1" Relationship="FYP_UOS_2022Model.FK_Task_Assign_Student_Task1" FromRole="Student_Task" ToRole="Task_Assign" />
         </EntityType>
         <EntityType Name="Task_Data">
           <Key>
@@ -316,8 +345,9 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="TaskData" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Task_fid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Student_Task" Relationship="FYP_UOS_2022Model.FK_Task_Data_Student_Task" FromRole="Task_Data" ToRole="Student_Task" />
+          <Property Name="Taskassign_fid" Type="Int32" Nullable="false" />
+          <Property Name="Submit_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Task_Assign" Relationship="FYP_UOS_2022Model.FK_Task_Data_Student_Task1" FromRole="Task_Data" ToRole="Task_Assign" />
         </EntityType>
         <Association Name="FK_Student_Class">
           <End Type="FYP_UOS_2022Model.Class" Role="Class" Multiplicity="0..1" />
@@ -328,30 +358,6 @@
             </Principal>
             <Dependent Role="Student">
               <PropertyRef Name="Clas_fid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Student_Task_Group">
-          <End Type="FYP_UOS_2022Model.Group" Role="Group" Multiplicity="1" />
-          <End Type="FYP_UOS_2022Model.Student_Task" Role="Student_Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Group">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Student_Task">
-              <PropertyRef Name="Group_fid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Task_Data_Student_Task">
-          <End Type="FYP_UOS_2022Model.Student_Task" Role="Student_Task" Multiplicity="1" />
-          <End Type="FYP_UOS_2022Model.Task_Data" Role="Task_Data" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student_Task">
-              <PropertyRef Name="Task_id" />
-            </Principal>
-            <Dependent Role="Task_Data">
-              <PropertyRef Name="Task_fid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -376,6 +382,54 @@
             </Principal>
             <Dependent Role="Group">
               <PropertyRef Name="supervisor_fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Task_Assign">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Group_fid" Type="Int32" Nullable="false" />
+          <Property Name="Task_fid" Type="Int32" Nullable="false" />
+          <Property Name="Assign_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Group" Relationship="FYP_UOS_2022Model.FK_Task_Assign_Group" FromRole="Task_Assign" ToRole="Group" />
+          <NavigationProperty Name="Task_Data" Relationship="FYP_UOS_2022Model.FK_Task_Data_Student_Task1" FromRole="Task_Assign" ToRole="Task_Data" />
+          <NavigationProperty Name="Student_Task1" Relationship="FYP_UOS_2022Model.FK_Task_Assign_Student_Task1" FromRole="Task_Assign" ToRole="Student_Task" />
+        </EntityType>
+        <Association Name="FK_Task_Assign_Group">
+          <End Type="FYP_UOS_2022Model.Group" Role="Group" Multiplicity="1" />
+          <End Type="FYP_UOS_2022Model.Task_Assign" Role="Task_Assign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Task_Assign">
+              <PropertyRef Name="Group_fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Data_Student_Task1">
+          <End Type="FYP_UOS_2022Model.Task_Assign" Role="Task_Assign" Multiplicity="1" />
+          <End Type="FYP_UOS_2022Model.Task_Data" Role="Task_Data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task_Assign">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Task_Data">
+              <PropertyRef Name="Taskassign_fid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Assign_Student_Task1">
+          <End Type="FYP_UOS_2022Model.Student_Task" Role="Student_Task" Multiplicity="1" />
+          <End Type="FYP_UOS_2022Model.Task_Assign" Role="Task_Assign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_Task">
+              <PropertyRef Name="Task_id" />
+            </Principal>
+            <Dependent Role="Task_Assign">
+              <PropertyRef Name="Task_fid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -448,7 +502,6 @@
           <EntitySetMapping Name="Student_Task">
             <EntityTypeMapping TypeName="FYP_UOS_2022Model.Student_Task">
               <MappingFragment StoreEntitySet="Student_Task">
-                <ScalarProperty Name="Group_fid" ColumnName="Group_fid" />
                 <ScalarProperty Name="Task_status" ColumnName="Task_status" />
                 <ScalarProperty Name="Task_end_Date" ColumnName="Task_end_Date" />
                 <ScalarProperty Name="Task_start_date" ColumnName="Task_start_date" />
@@ -460,8 +513,19 @@
           <EntitySetMapping Name="Task_Data">
             <EntityTypeMapping TypeName="FYP_UOS_2022Model.Task_Data">
               <MappingFragment StoreEntitySet="Task_Data">
-                <ScalarProperty Name="Task_fid" ColumnName="Task_fid" />
+                <ScalarProperty Name="Submit_Date" ColumnName="Submit_Date" />
+                <ScalarProperty Name="Taskassign_fid" ColumnName="Taskassign_fid" />
                 <ScalarProperty Name="TaskData" ColumnName="TaskData" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task_Assign">
+            <EntityTypeMapping TypeName="FYP_UOS_2022Model.Task_Assign">
+              <MappingFragment StoreEntitySet="Task_Assign">
+                <ScalarProperty Name="Assign_Date" ColumnName="Assign_Date" />
+                <ScalarProperty Name="Task_fid" ColumnName="Task_fid" />
+                <ScalarProperty Name="Group_fid" ColumnName="Group_fid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

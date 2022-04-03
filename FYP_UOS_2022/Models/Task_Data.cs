@@ -16,8 +16,9 @@ namespace FYP_UOS_2022.Models
     {
         public int id { get; set; }
         public string TaskData { get; set; }
-        public int Task_fid { get; set; }
+        public int Taskassign_fid { get; set; }
+        public System.DateTime Submit_Date { get; set; }
     
-        public virtual Student_Task Student_Task { get; set; }
+        public virtual Task_Assign Task_Assign { get; set; }
     }
 }

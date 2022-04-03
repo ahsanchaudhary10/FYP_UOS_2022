@@ -1,0 +1,52 @@
+﻿@model IEnumerable<FYP_UOS_2022.Models.Task_Assign>
+
+@{
+    ViewBag.Title = "StudentsTask";
+}
+
+<h2>StudentsTask</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Assign_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group.Group_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_Task1.Task_Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Assign_Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.Group_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Task1.Task_Name)
+            </td>
+            @if (item.Task_Data.Count() < 1)
+            {
+                <td>
+                    <a href="/studentLink/taskform?id=@item.id" class="btn btn-primary">Submit</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    Task Submitted
+                </td>
+            }
+           
+        </tr>
+    }
+
+</table>

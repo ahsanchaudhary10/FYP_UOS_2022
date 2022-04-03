@@ -1,0 +1,37 @@
+﻿@model FYP_UOS_2022.Models.Student_Task
+@using FYP_UOS_2022.Models
+@{
+    ViewBag.Title = "AssignTask";
+    Db_Entities db = new Db_Entities();
+   var classes= db.Classes.ToList();
+}
+<h2> @TempData["msg"]</h2>
+<h2>AssignTask</h2>
+<h2>@Model.Task_Name</h2>
+
+ 
+<table class="table">
+    <tr>
+
+        <td>
+            Class Name
+        </td>
+
+        <td>
+            Select
+        </td>
+
+    </tr>
+    @foreach (var item in classes)
+    {
+<tr id="stdlist">
+    <td>@item.Class_Name</td>
+    @*<td>@item.Students.Where(x=>x.Group_fid!=null).GroupBy(x=>x.Group_fid).Where(x=>x.Key==).Count()</td>*@
+  
+    <td id="box">
+       <a href="@Url.Action("AssigntasktoStudent","SupervisorLink",new { id=item.id,taskid=Model.Task_id})">Assign</a>
+    </td>
+</tr>
+    }
+
+</table>

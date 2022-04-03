@@ -32,6 +32,14 @@ namespace FYP_UOS_2022.Controllers
             ViewBag.error = "Invalid ID And Passowrd";
             return View();
         }
+        public ActionResult Logout()
+        {
+            BaseHelper.CurrentExamCell = null;
+            BaseHelper.CurrentStudent = null;
+            BaseHelper.CurrentPMO = null;
+            BaseHelper.CurrentSupervisor = null;
+            return RedirectToAction("StudentSignin");
+        }
         public ActionResult StudentSignin()
         {
 
@@ -44,7 +52,7 @@ namespace FYP_UOS_2022.Controllers
             if (result != null)
             {
                 BaseHelper.CurrentStudent = result;
-                return RedirectToAction("StudentIndex");
+                return RedirectToAction("index","StudentLink");
             }
             ViewBag.error = "Invalid ID And Passowrd";
             return View();

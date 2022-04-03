@@ -133,7 +133,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PMOesController.cs" />
     <Compile Include="Controllers\PMOlinkController.cs" />
+    <Compile Include="Controllers\StudentLinkController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Controllers\Student_TaskController.cs" />
+    <Compile Include="Controllers\SupervisorLinkController.cs" />
     <Compile Include="Controllers\SupervisorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -172,6 +175,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Supervisor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Task_Assign.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Task_Data.cs">
@@ -451,9 +457,21 @@
     <Content Include="Views\PMOlink\SelectSupervisor.cshtml" />
     <Content Include="Views\PMOlink\SupervisorGroups.cshtml" />
     <Content Include="Views\PMOlink\StudentsGroups.cshtml" />
+    <Content Include="Views\SupervisorLink\StudentGroups.cshtml" />
+    <Content Include="Views\SupervisorLink\GroupDetail.cshtml" />
+    <Content Include="Views\Student_Task\Create.cshtml" />
+    <Content Include="Views\Student_Task\Delete.cshtml" />
+    <Content Include="Views\Student_Task\Details.cshtml" />
+    <Content Include="Views\Student_Task\Edit.cshtml" />
+    <Content Include="Views\Student_Task\Index.cshtml" />
+    <Content Include="Views\SupervisorLink\AssignTask.cshtml" />
+    <Content Include="Views\StudentLink\StudentsTask.cshtml" />
+    <Content Include="Views\StudentLink\index.cshtml" />
+    <Content Include="Views\StudentLink\taskform.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\taskdata\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>

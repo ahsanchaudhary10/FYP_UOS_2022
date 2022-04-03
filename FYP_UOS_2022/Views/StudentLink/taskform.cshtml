@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "taskform";
+    int id = (int)TempData["id"];
+}
+
+<h2>taskform</h2>
+
+<div id="login-page">
+    <div class="container">
+        <h1 class="text-center">Task Form</h1>
+        <form class="form-login" action="/StudentLink/taskform" method="post" enctype="multipart/form-data">
+            <h2 class="form-login-heading">Submit Task</h2>
+            <div class="login-wrap">
+                <input type="file" required class="form-control" name="task_file" >
+                <input type="hidden" value="@id" class="form-control" name="fid" >
+                
+                <label style="margin-left:20px" class="text-danger">
+                    @ViewBag.error
+                </label>
+                <button class="btn btn-theme btn-block" type="submit"><i ></i> Submit</button>
+                <hr>
+
+            </div>
+            <!-- Modal -->
+            <!-- modal -->
+        </form>
+    </div>
+</div>

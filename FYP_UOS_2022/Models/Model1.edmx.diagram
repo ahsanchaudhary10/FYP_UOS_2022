@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="24a1e08bcbbe4d95bd760a617140f165" Name="Diagram1">
+      <Diagram DiagramId="24a1e08bcbbe4d95bd760a617140f165" Name="Diagram1" DisplayType="true">
         <EntityTypeShape EntityType="FYP_UOS_2022Model.Examcell" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FYP_UOS_2022Model.PMO" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FYP_UOS_2022Model.Student" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
@@ -15,10 +15,12 @@
         <EntityTypeShape EntityType="FYP_UOS_2022Model.Student_Task" Width="1.5" PointX="5.625" PointY="5" />
         <EntityTypeShape EntityType="FYP_UOS_2022Model.Task_Data" Width="1.5" PointX="7.875" PointY="5.375" />
         <AssociationConnector Association="FYP_UOS_2022Model.FK_Student_Class" />
-        <AssociationConnector Association="FYP_UOS_2022Model.FK_Student_Task_Group" />
-        <AssociationConnector Association="FYP_UOS_2022Model.FK_Task_Data_Student_Task" />
         <AssociationConnector Association="FYP_UOS_2022Model.FK_Student_Group" />
         <AssociationConnector Association="FYP_UOS_2022Model.FK_Group_Supervisor" />
+        <EntityTypeShape EntityType="FYP_UOS_2022Model.Task_Assign" Width="1.5" PointX="10.875" PointY="5.25" />
+        <AssociationConnector Association="FYP_UOS_2022Model.FK_Task_Assign_Group" />
+        <AssociationConnector Association="FYP_UOS_2022Model.FK_Task_Data_Student_Task1" />
+        <AssociationConnector Association="FYP_UOS_2022Model.FK_Task_Assign_Student_Task1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

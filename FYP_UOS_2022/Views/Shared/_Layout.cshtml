@@ -1,18 +1,18 @@
 ﻿@using FYP_UOS_2022.Models
 @using FYP_UOS_2022.Utills
 @{
-   // Servrce_provider_android_appEntities db = new Servrce_provider_android_appEntities();
-    //var user = new Admin();
-    //if (CurrentUser.admin == null)
-    //{
-    //    Response.Redirect("/Home/Signin");
-    //    return;
-    //}
-    //        else
-    //        {
-    //            user=CurrentUser.admin;
+// Servrce_provider_android_appEntities db = new Servrce_provider_android_appEntities();
+//var user = new Admin();
+//if (CurrentUser.admin == null)
+//{
+//    Response.Redirect("/Home/Signin");
+//    return;
+//}
+//        else
+//        {
+//            user=CurrentUser.admin;
 
-    //        }
+//        }
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -92,19 +92,19 @@
                 <ul class="sidebar-menu" id="nav-accordion">
                     <p class="centered"><a href=""><img src="~/content/Admin/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
                     <h5 class="centered">Admin</h5>
-                   
+
 
                     @if (BaseHelper.CurrentExamCell != null)
                     {
                         <li class="">
-                            <a href="@Url.Action("ExamCellIndex","Home")">
+                            <a href="@Url.Action("ExamCellIndex", "Home")">
                                 <i class="fa fa-desktop"></i>
                                 <span>Home</span>
                             </a>
 
                         </li>
                         <li class="">
-                            <a href="@Url.Action("Index","PMOes")">
+                            <a href="@Url.Action("Index", "PMOes")">
                                 <i class="fa fa-desktop"></i>
                                 <span>Manage PMO's'</span>
                             </a>
@@ -114,21 +114,21 @@
                     else if (BaseHelper.CurrentPMO != null)
                     {
                         <li class="">
-                            <a href="@Url.Action("PMOIndex","Home")">
+                            <a href="@Url.Action("PMOIndex", "Home")">
                                 <i class="fa fa-desktop"></i>
                                 <span>Home</span>
                             </a>
 
                         </li>
                         <li class="">
-                            <a href="@Url.Action("Index","SuperVisors")">
+                            <a href="@Url.Action("Index", "SuperVisors")">
                                 <i class="fa fa-desktop"></i>
                                 <span>Manage SuperVisor's</span>
                             </a>
 
                         </li>
-                    <li class="">
-                            <a href="@Url.Action("SelectSupervisor","PMOlink")">
+                        <li class="">
+                            <a href="@Url.Action("SelectSupervisor", "PMOlink")">
                                 <i class="fa fa-desktop"></i>
                                 <span>Assign Group</span>
                             </a>
@@ -138,27 +138,52 @@
                     else if (BaseHelper.CurrentSupervisor != null)
                     {
                         <li class="">
-                            <a href="@Url.Action("SuperVisorIndex","Home")">
+                            <a href="@Url.Action("SuperVisorIndex", "Home")">
                                 <i class="fa fa-desktop"></i>
                                 <span>Home</span>
                             </a>
 
                         </li>
                         <li class="">
-                            <a href="@Url.Action("Index","Classes")">
+                            <a href="@Url.Action("Index", "Classes")">
                                 <i class="fa fa-desktop"></i>
                                 <span>Manage Classes</span>
                             </a>
 
                         </li>
                         <li class="">
-                            <a href="@Url.Action("Index","Students")">
+                            <a href="@Url.Action("Index", "Students")">
                                 <i class="fa fa-desktop"></i>
                                 <span>Manage Students</span>
                             </a>
 
                         </li>
+                        <li class="">
+                            <a href="@Url.Action("StudentGroups", "SupervisorLink")">
+                                <i class="fa fa-desktop"></i>
+                                <span> Students Groups</span>
+                            </a>
+
+                        </li>
+                        <li class="">
+                            <a href="@Url.Action("index", "Student_Task")">
+                                <i class="fa fa-desktop"></i>
+                                <span> Students Task</span>
+                            </a>
+
+                        </li>
                     }
+                    else if (BaseHelper.CurrentStudent != null)
+                    {
+                        <li class="">
+                            <a href="@Url.Action("StudentsTask", "StudentLink")">
+                                <i class="fa fa-desktop"></i>
+                                <span> Yours Task</span>
+                            </a>
+
+                        </li>
+                    }
+
 
 
                 </ul>

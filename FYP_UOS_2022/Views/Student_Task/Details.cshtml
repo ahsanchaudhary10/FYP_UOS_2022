@@ -1,0 +1,58 @@
+﻿@model FYP_UOS_2022.Models.Student_Task
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student_Task</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Task_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Task_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Task_start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Task_start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Task_end_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Task_end_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Task_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Task_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Task_Assign.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Task_Assign.id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Task_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<FYP_UOS_2022.Models.Student>
+@using FYP_UOS_2022.Models
+@{
+    ViewBag.Title = "GroupDetail";
+    Db_Entities db = new Db_Entities();
+    var record= Model.FirstOrDefault();
+}
+
+<h2>GroupDetail</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student_Email)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Class.Class_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group.Group_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student_Email)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.Class.Class_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group.Group_id)
+        </td>
+        <td>
+          
+    </tr>
+}
+
+</table>
+
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+          Task Name
+        </th>
+        <th>
+           Task assign Date
+        </th>
+
+        <th>
+          Task End Date
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in db.Task_Assign.Where(x=>x.Group_fid==record.Group_fid))
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student_Task1.Task_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Assign_Date))
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Student_Task1.Task_end_Date)
+    </td>
+
+    @if (item.Task_Data.Count() < 1)
+    {
+        <td>
+            Not Submite yet
+        </td>
+    }
+    else
+    {
+        <td>
+           <a class="btn btn-primary"  href="@Url.Content( item.Task_Data.FirstOrDefault().TaskData)" download="">Download File</a>
+        </td>
+    }
+
+</tr>
+    }
+
+</table>
+

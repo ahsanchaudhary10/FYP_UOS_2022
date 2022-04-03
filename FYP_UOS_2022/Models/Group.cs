@@ -17,8 +17,8 @@ namespace FYP_UOS_2022.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Group()
         {
-            this.Student_Task = new HashSet<Student_Task>();
             this.Students = new HashSet<Student>();
+            this.Task_Assign = new HashSet<Task_Assign>();
         }
     
         public int id { get; set; }
@@ -26,9 +26,9 @@ namespace FYP_UOS_2022.Models
         public int supervisor_fid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student_Task> Student_Task { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
         public virtual Supervisor Supervisor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Task_Assign> Task_Assign { get; set; }
     }
 }
