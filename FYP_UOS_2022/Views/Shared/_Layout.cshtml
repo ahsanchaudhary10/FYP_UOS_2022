@@ -1,7 +1,6 @@
 ﻿@using FYP_UOS_2022.Models
 @using FYP_UOS_2022.Utills
-@{
-// Servrce_provider_android_appEntities db = new Servrce_provider_android_appEntities();
+@{  // Servrce_provider_android_appEntities db = new Servrce_provider_android_appEntities();
 //var user = new Admin();
 //if (CurrentUser.admin == null)
 //{
@@ -77,7 +76,25 @@
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="/home/logout">Logout</a></li>
+                    @if (BaseHelper.CurrentStudent != null)
+                    {
+                        <li><a class="logout" href="/home/logout">Logout</a></li>
+                    }
+                    else if (BaseHelper.CurrentPMO != null)
+                    {
+                        <li><a class="logout" href="/home/logoutPMO">Logout</a></li>
+
+                    }
+                    else if (BaseHelper.CurrentSupervisor != null)
+                    {
+                        <li><a class="logout" href="/home/logoutSuperVisor">Logout</a></li>
+
+                    }
+                    else if (BaseHelper.CurrentExamCell != null)
+                    {
+                        <li><a class="logout" href="/home/logoutExam">Logout</a></li>
+
+                    }
                 </ul>
             </div>
         </header>

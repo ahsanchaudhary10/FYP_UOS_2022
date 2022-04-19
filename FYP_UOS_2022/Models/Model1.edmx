@@ -82,7 +82,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaskData" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Taskassign_fid" Type="int" Nullable="false" />
           <Property Name="Submit_Date" Type="datetime" Nullable="false" />

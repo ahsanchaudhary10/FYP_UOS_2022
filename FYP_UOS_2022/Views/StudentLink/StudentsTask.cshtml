@@ -35,9 +35,19 @@
             </td>
             @if (item.Task_Data.Count() < 1)
             {
+
+                if (item.Student_Task1.Task_end_Date >= DateTime.Now)
+                {
                 <td>
                     <a href="/studentLink/taskform?id=@item.id" class="btn btn-primary">Submit</a>
                 </td>
+                }
+                    else
+                    {
+        <td>
+            <span>Task is Expire</span>
+        </td>
+                    }
             }
             else
             {

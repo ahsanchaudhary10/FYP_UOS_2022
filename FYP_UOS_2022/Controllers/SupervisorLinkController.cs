@@ -60,8 +60,8 @@ namespace FYP_UOS_2022.Controllers
             db.SaveChanges();
 
             }
-            TempData["msg"] = " <script> ' Assign Task Sucessfully ' </script> ";
-            return RedirectToAction("index","Task");
+            TempData["msg"] = " <script>  alert( ' Assign Task Sucessfully ') </script> ";
+            return RedirectToAction("index","Student_Task");
         }
     }
 }

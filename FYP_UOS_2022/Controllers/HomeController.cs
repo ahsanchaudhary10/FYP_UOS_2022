@@ -39,6 +39,28 @@ namespace FYP_UOS_2022.Controllers
             BaseHelper.CurrentPMO = null;
             BaseHelper.CurrentSupervisor = null;
             return RedirectToAction("StudentSignin");
+        } 
+        public ActionResult LogoutPMO()
+        {
+            BaseHelper.CurrentExamCell = null;
+            BaseHelper.CurrentStudent = null;
+            BaseHelper.CurrentPMO = null;
+            BaseHelper.CurrentSupervisor = null;
+            return RedirectToAction("PMOSignin");
+        } public ActionResult LogoutSuperVisor()
+        {
+            BaseHelper.CurrentExamCell = null;
+            BaseHelper.CurrentStudent = null;
+            BaseHelper.CurrentPMO = null;
+            BaseHelper.CurrentSupervisor = null;
+            return RedirectToAction("SuperVisorSignin");
+        } public ActionResult LogoutExam()
+        {
+            BaseHelper.CurrentExamCell = null;
+            BaseHelper.CurrentStudent = null;
+            BaseHelper.CurrentPMO = null;
+            BaseHelper.CurrentSupervisor = null;
+            return RedirectToAction("ExamSignin");
         }
         public ActionResult StudentSignin()
         {
