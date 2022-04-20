@@ -160,6 +160,11 @@
                                 <div class="input-container">
                                     <button class="btn-style">Sign In</button>
                                 </div>
+                                <div class="user-box-footer">
+                                    Forgot Password? <a href="#" data-toggle="modal" data-target="#exampleModal">
+                                        Click Here
+                                    </a>
+                                </div>
                             </div>
                         </form>
                         <!--FORM FIELD END-->
@@ -173,6 +178,35 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Forgot Password</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <form action="/Home/FrogetPassword" method="post" id="myForm">
+                            <div class="form-group">
+                                <label for="recipient-name" class="control-label">Email:</label>
+                                <input type="email" autofocus style="border:solid 2px" placeholder="Email" name="email" class="form-control" id="email">
+                            </div>
+                            <select name="type" class="form-control">
+                                <option value="Student">Student</option>
+                                <option value="PMO">PMO</option>
+                                
+                                <option value="Supervisor">SuperVisor</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" form="myForm">Send Code</button>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- SIGNIN MODEL END -->
@@ -208,7 +242,7 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="logo_wrap">
-                               <h4>FYP REPOSITRY</h4>
+                                <h4>FYP REPOSITRY</h4>
                             </div>
                         </div>
                         <div class="col-md-10">
@@ -222,8 +256,8 @@
                                         <a href="/home/gallery">Gallery</a>
 
                                     </li>
-                                   
-                                    
+
+
                                     <li><a href="" data-toggle="modal" data-target="#signin-box">Sign In</a></li>
                                 </ul>
                                 <!--DL Menu Start-->
@@ -367,7 +401,6 @@
         </footer>
         <!--FOOTER END-->
         <!--COPYRIGHTS START-->
-        
         <!--COPYRIGHTS START-->
     </div>
     <!--KF KODE WRAPPER WRAP END-->

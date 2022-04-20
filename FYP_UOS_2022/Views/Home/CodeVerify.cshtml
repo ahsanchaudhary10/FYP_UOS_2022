@@ -1,0 +1,65 @@
+@{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<div class="kf_inr_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!--KF INR BANNER DES Wrap Start-->
+                <div class="kf_inr_ban_des">
+                    <div class="inr_banner_heading">
+                        <h3>Cpde Verification</h3>
+                    </div>
+
+                    <div class="kf_inr_breadcrumb">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">verify Code</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--KF INR BANNER DES Wrap End-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--Content Wrap End-->
+<div class="kf_content_wrap">
+    <!--LOCATION MAP Wrap Start-->
+    
+    <!--LOCATION MAP Wrap END-->
+    <section>
+        <div class="container">
+            <!--CONTACT HEADING Start-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact_2_headung">
+                        <h3>Code Verification</h3>
+                       
+                    </div>
+                </div>
+            </div>
+            <!--CONTACT HEADING END-->
+            <div class="contct_wrap">
+                <div class="row">
+                    
+                    <div class="col-md-8 col-md-offset-2">
+                        <form action="/home/CodeVerify" method="post">
+                            <div class="contact_des">
+                                <h4>Verification Form</h4>
+                                <div class="inputs_des des_2">
+                                    <input type="text" name="code"  required placeholder="code"><i class="fa fa-code"></i>
+                                </div>
+
+                                <div class="inputs_des des_2">
+                                    <button type="submit">verify</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

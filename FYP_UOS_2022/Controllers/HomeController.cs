@@ -2,6 +2,7 @@
 using FYP_UOS_2022.Utills;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,6 +20,122 @@ namespace FYP_UOS_2022.Controllers
         {
             return View();
         }
+
+        public ActionResult NewPassword()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NewPassword(string password)
+        {
+            var userEmail = (string)Session["userforgetPassword"];
+            if (userEmail == null)
+            {
+                TempData["error"] = "Email is Invalid or Not Available";
+                return RedirectToAction("customerlogin");
+            }
+            string type = (string)Session["type"];
+            if (type == "Student")
+            {
+                var updaetStudent = db.Students.Where(x => x.Student_Email == userEmail).FirstOrDefault();
+                updaetStudent.Student_Password = password;
+                db.Entry(updaetStudent).State = EntityState.Modified;
+                db.SaveChanges();
+                
+            }
+            else if(type == "PMO")
+            {
+                var UpdatePMO = db.PMOes.Where(x => x.PMO_Email == userEmail).FirstOrDefault();
+                UpdatePMO.PMO_password = password;
+                db.Entry(UpdatePMO).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            else if(type == "Supervisor")
+            {
+                var updateSuper = db.Supervisors.Where(x => x.Supervisor_Email == userEmail).FirstOrDefault();
+                updateSuper.Supervisor_Password = password;
+                db.Entry(updateSuper).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+                TempData["msg"] = "Password Updated Successfully";
+            return RedirectToAction("indexuser");
+
+        }
+        public ActionResult CodeVerify()
+        {
+
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CodeVerify(int code)
+        {
+            int sendCode = (int)Session["code"];
+            if (code == sendCode)
+            {
+                return RedirectToAction("NewPassword");
+
+            }
+            TempData["error"] = "Invalid Code";
+            return View();
+        }
+        [HttpPost]
+        public ActionResult FrogetPassword(string email , string type)
+        {
+            if (type == "Student")
+            {
+                var student = db.Students.Where(x => x.Student_Email == email).FirstOrDefault();
+                if (student == null)
+                {
+                    TempData["error"] = "Invalid Email";
+                    return RedirectToAction("CustomerLogin");
+                }
+                Session["userforgetPassword"] = student.Student_Email;
+
+            }
+           else if (type == "PMO")
+            {
+                var PMO = db.PMOes.Where(x => x.PMO_Email == email).FirstOrDefault();
+                if (PMO == null)
+                {
+                    TempData["error"] = "Invalid Email";
+                    return RedirectToAction("CustomerLogin");
+                }
+                Session["userforgetPassword"] = PMO.PMO_Email;
+                
+            }
+             else if (type == "Supervisor")
+            {
+                var Supervisor = db.Supervisors.Where(x => x.Supervisor_Email == email).FirstOrDefault();
+                if (Supervisor == null)
+                {
+                    TempData["error"] = "Invalid Email";
+                    return RedirectToAction("CustomerLogin");
+                }
+                Session["userforgetPassword"] = Supervisor.Supervisor_Email;
+            }
+            else
+            {
+                return RedirectToAction("indexuser");
+
+            }
+
+
+            Random random = new Random();
+            int Code = random.Next(1001, 9999);
+            Session["code"] = Code;
+            string useremail = (string)Session["userforgetPassword"];
+
+            Utill.SendEmailForForgotPassword(useremail, Code);
+            Session["type"] = type;
+            return RedirectToAction("CodeVerify");
+        }
+
+
+
+
+
         public ActionResult gallery()
         {
             return View();
