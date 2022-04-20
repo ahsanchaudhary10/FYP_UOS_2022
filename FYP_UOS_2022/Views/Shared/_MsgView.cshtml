@@ -1,0 +1,18 @@
+﻿@if (TempData["msg"] != null)
+{
+   
+<script>
+        alert('@TempData["msg"]')
+        
+</script>
+}
+@if (TempData["error"] != null)
+{
+   
+    <script>
+      
+        alert('@TempData["error"]')
+
+    </script>
+}
+

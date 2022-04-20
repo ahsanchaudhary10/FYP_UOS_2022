@@ -1,0 +1,414 @@
+﻿@{ Layout = ""; }
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from kodeforest.net/html/uoe/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Apr 2022 12:16:23 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Education</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/content/Users/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Full Calender CSS -->
+    <link href="~/content/Users/css/fullcalendar.css" rel="stylesheet">
+    <!-- Owl Carousel CSS -->
+    <link href="~/content/Users/css/owl.carousel.css" rel="stylesheet">
+    <!-- Pretty Photo CSS -->
+    <link href="~/content/Users/css/prettyPhoto.css" rel="stylesheet">
+    <!-- Bx-Slider StyleSheet CSS -->
+    <link href="~/content/Users/css/jquery.bxslider.css" rel="stylesheet">
+    <!-- Font Awesome StyleSheet CSS -->
+    <link href="~/content/Users/css/font-awesome.min.css" rel="stylesheet">
+    <!-- DL Menu CSS -->
+    <link href="~/content/Users/js/dl-menu/component.css" rel="stylesheet">
+    <link href="~/content/Users/svg/style.css" rel="stylesheet">
+    <!-- Widget CSS -->
+    <link href="~/content/Users/css/widget.css" rel="stylesheet">
+    <!-- Typography CSS -->
+    <link href="~/content/Users/css/typography.css" rel="stylesheet">
+    <!-- Shortcodes CSS -->
+    <link href="~/content/Users/css/shortcodes.css" rel="stylesheet">
+    <!-- Custom Main StyleSheet CSS -->
+    <link href="~/content/Users/style.css" rel="stylesheet">
+    <!-- Color CSS -->
+    <link href="~/content/Users/css/color.css" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="~/content/Users/css/responsive.css" rel="stylesheet">
+    <!-- SELECT MENU -->
+    <link href="~/content/Users/css/selectric.css" rel="stylesheet">
+    <!-- SIDE MENU -->
+    <link rel="stylesheet" href="~/content/Users/css/jquery.sidr.dark.css">
+</head>
+
+<body>
+    <!--KF KODE WRAPPER WRAP START-->
+    <div class="kode_wrapper">
+        <!-- register Modal -->
+        <div class="modal fade" id="reg-box" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-content">
+                    <!--SIGNIN AS USER START-->
+                    <div class="user-box">
+                        <h2>Sign up as a User</h2>
+                        <!--FORM FIELD START-->
+                        <div class="form">
+                            <div class="input-container">
+                                <input type="text" placeholder="Name">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="input-container">
+                                <input type="text" placeholder="E-mail">
+                                <i class="fa fa-envelope-o"></i>
+                            </div>
+                            <div class="input-container">
+                                <input type="password" placeholder="Password">
+                                <i class="fa fa-unlock"></i>
+                            </div>
+                            <div class="input-container">
+                                <label>
+                                    <span class="radio">
+                                        <input type="checkbox" name="foo" value="1" checked>
+                                        <span class="radio-value" aria-hidden="true"></span>
+                                    </span>
+                                    <span>Remember me</span>
+                                </label>
+                            </div>
+                            <div class="input-container">
+                                <button class="btn-style">Sign Up</button>
+                            </div>
+                        </div>
+                        <!--FORM FIELD END-->
+                        <!--OPTION START-->
+                        <div class="option">
+                            <h5>Or Using</h5>
+                        </div>
+                        <!--OPTION END-->
+                        <!--OPTION START-->
+                        <div class="social-login">
+                            <a href="#" class="google"><i class="fa fa-google-plus"></i>Google Account</a>
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i>Facebook Account</a>
+                        </div>
+                        <!--OPTION END-->
+                    </div>
+                    <!--SIGNIN AS USER END-->
+                    <div class="user-box-footer">
+                        Already have an account? <a href="#">
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- register Modal end-->
+        <!-- SIGNIN MODEL START -->
+        <div class="modal fade" id="signin-box" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-content">
+                    <div class="user-box">
+                        <h2>Sign In</h2>
+                        <!--FORM FIELD START-->
+                        <form action="/home/signin" method="post">
+                            <div class="form">
+                                <div class="input-container">
+                                    <input type="text" name="Email" placeholder="E-mail">
+                                    <i class="fa fa-envelope-o"></i>
+                                </div>
+                                <div class="input-container">
+                                    <input type="password" name="password" placeholder="Password">
+                                    <i class="fa fa-unlock"></i>
+                                </div>
+                                <div class="option">
+                                    <h5>Select Type</h5>
+                                </div>
+                                <div class="input-container">
+                                    <label>
+                                        <span class="radio" style="margin-left:8px">
+                                            <input type="radio" name="type" value="Exam">
+                                            <span class="radio-value" aria-hidden="true"></span>
+                                        </span>
+
+                                        <span>Exam Cell</span>
+                                    </label>
+                                    <label>
+                                        <span class="radio" style="margin-left:8px">
+                                            <input type="radio" name="type" value="PMO">
+                                            <span class="radio-value" aria-hidden="true"></span>
+                                        </span>
+                                        <span>PMO</span>
+                                    </label>
+                                    <label>
+                                        <span class="radio" style="margin-left:8px">
+                                            <input type="radio" name="type" value="Supervisor">
+
+                                            <span class="radio-value" aria-hidden="true"></span>
+                                        </span>
+                                        <span>SuperVisor</span>
+                                    </label>
+                                    <label>
+                                        <span class="radio" style="margin-left:8px">
+                                            <input type="radio" name="type" value="Student" checked>
+                                            <span class="radio-value" aria-hidden="true"></span>
+                                        </span>
+
+                                        <span>Student</span>
+                                    </label>
+                                </div>
+                                <div class="input-container">
+                                    <button class="btn-style">Sign In</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!--FORM FIELD END-->
+                        <!--OPTION START-->
+                        <!--OPTION END-->
+                        <!--OPTION START-->
+                        <!--OPTION END-->
+
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- SIGNIN MODEL END -->
+        <!--HEADER START-->
+        <header id="header_2">
+            <!--kode top bar start-->
+            <div class="top_bar_2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="pull-left">
+                                <em class="contct_2"><i class="fa fa-phone"></i> Call Us  on 0800 123 46 4747</em>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+
+                            <ul class="login_wrap">
+                                @*<li><a href="#" data-toggle="modal" data-target="#reg-box"><i class="fa fa-user"></i>Register</a></li>*@
+                                <li><a href="#" data-toggle="modal" data-target="#signin-box"><i class="fa fa-sign-in"></i>Sign In</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--kode top bar end-->
+            <!--kode navigation start-->
+            <div class="kode_navigation">
+                <div id="mobile-header">
+                    <a id="responsive-menu-button" href="#sidr-main"><i class="fa fa-bars"></i></a>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="logo_wrap">
+                               <h4>FYP REPOSITRY</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <!--kode nav_2 start-->
+                            <div class="nav_2" id="navigation">
+                                <ul>
+                                    <li><a href="/home/indexuser">home</a></li>
+                                    <li><a href="/home/aboutus">About Us</a></li>
+
+                                    <li>
+                                        <a href="/home/gallery">Gallery</a>
+
+                                    </li>
+                                   
+                                    
+                                    <li><a href="" data-toggle="modal" data-target="#signin-box">Sign In</a></li>
+                                </ul>
+                                <!--DL Menu Start-->
+                                <div id="kode-responsive-navigation" class="dl-menuwrapper">
+                                    <button class="dl-trigger">Open Menu</button>
+                                    <ul class="dl-menu">
+                                        <li><a href="index.html">home</a></li>
+                                        <li><a href="about-us.html">about us</a></li>
+                                        <li class="menu-item kode-parent-menu">
+                                            <a href="#">Event</a>
+                                            <ul class="dl-submenu">
+                                                <li><a href="our-event.html">our Event</a></li>
+                                                <li><a href="event-list.html">Event List</a></li>
+                                                <li><a href="event-detail.html">Event Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item kode-parent-menu">
+                                            <a href="#">Blog</a>
+                                            <ul class="dl-submenu">
+                                                <li><a href="our-blog.html">our Blog</a></li>
+                                                <li><a href="blog-2-column.html">blog 2 column</a></li>
+                                                <li><a href="blog-3-column.html">blog 3 column</a></li>
+                                                <li><a href="blog-left-sidebar.html">blog with left sidebar</a></li>
+                                                <li><a href="blog-right-sidebar.html">blog with right sidebar</a></li>
+                                                <li><a href="blog-detail.html">blog-detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item kode-parent-menu">
+                                            <a href="#">Course</a>
+                                            <ul class="dl-submenu">
+                                                <li><a href="our-courses.html">Our Course</a></li>
+                                                <li><a href="courses-list.html">Course List</a></li>
+                                                <li><a href="courses-detail.html">Course Detail</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item kode-parent-menu">
+                                            <a href="#">Teacher</a>
+                                            <ul class="dl-submenu">
+                                                <li><a href="our-teacher.html">Our Teacher</a></li>
+                                                <li><a href="our-teacher-details.html">our teacher details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item kode-parent-menu">
+                                            <a href="#">Gallery</a>
+                                            <ul class="dl-submenu">
+                                                <li><a href="gallery-masonary-2col.html">Masonary 2 Col </a></li>
+                                                <li><a href="gallery-masonary.html">Masonary 3 Col </a></li>
+                                                <li><a href="gallery-masonary-4col.html">Masonary 4 Col </a></li>
+                                                <li><a href="filterable-gallery.html">Simple gallery</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item kode-parent-menu">
+                                            <a href="#">404 Page</a>
+                                            <ul class="dl-submenu">
+                                                <li><a href="404.html">404 Page</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item kode-parent-menu">
+                                            <a href="#">Contact US</a>
+                                            <ul class="dl-submenu">
+                                                <li><a href="contactus.html">Contact Us 1</a></li>
+                                                <li><a href="contactus-2.html">Contact Us 2</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--DL Menu END-->
+                            </div>
+                            <!--kode nav_2 end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--kode navigation end-->
+        </header>
+        <!--HEADER END-->
+        @Html.Partial("_MsgView")
+        @RenderBody()
+        <footer>
+            <!--EDU2 FOOTER CONTANT WRAP START-->
+            <div class="container">
+                <div class="row">
+                    <!--EDU2 FOOTER CONTANT DES START-->
+                    <div class="col-md-3">
+                        <div class="widget widget-links">
+                            <h5>Information</h5>
+                            <ul>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Our Stories</a></li>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Our History</a></li>
+                                <li><a href="#">Sprcialist Info</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--EDU2 FOOTER CONTANT DES END-->
+                    <!--EDU2 FOOTER CONTANT DES START-->
+                    <div class="col-md-3">
+                        <div class="widget widget-links">
+                            <h5>Student Help</h5>
+                            <ul>
+                                <li><a href="#">My Info</a></li>
+                                <li><a href="#">My Questions</a></li>
+                                <li><a href="#">F.A.Q</a></li>
+                                <li><a href="#">Serch Courses</a></li>
+                                <li><a href="#">Latest Informations</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--EDU2 FOOTER CONTANT DES END-->
+                    <!--EDU2 FOOTER CONTANT DES START-->
+                    <div class="col-md-3">
+                        <div class="widget wiget-instagram">
+                            <h5>Instagram</h5>
+                            <ul>
+                                <li><a href="#"><img src="~/content/Users/extra-images/instagram-1.jpg" alt="" /></a></li>
+                                <li><a href="#"><img src="~/content/Users/extra-images/instagram-2.jpg" alt="" /></a></li>
+                                <li><a href="#"><img src="~/content/Users/extra-images/instagram-3.jpg" alt="" /></a></li>
+                                <li><a href="#"><img src="~/content/Users/extra-images/instagram-4.jpg" alt="" /></a></li>
+                                <li><a href="#"><img src="~/content/Users/extra-images/instagram-5.jpg" alt="" /></a></li>
+                                <li><a href="#"><img src="~/content/Users/extra-images/instagram-6.jpg" alt="" /></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--EDU2 FOOTER CONTANT DES END-->
+                    <!--EDU2 FOOTER CONTANT DES START-->
+                    <div class="col-md-3">
+                        <div class="widget widget-contact">
+                            <h5>Contact</h5>
+                            <ul>
+                                <li>PO Box UN152468, 1 Street North, New Towm, California, USA</li>
+                                <li>Phone : <a href="#"> 5 (012) 4565 789</a></li>
+                                <li>Fax : <a href="#"> 5 (012) 4565 789</a></li>
+                                <li>Email : <a href="#"> Infoinfo.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--EDU2 FOOTER CONTANT DES END-->
+                </div>
+            </div>
+        </footer>
+        <!--FOOTER END-->
+        <!--COPYRIGHTS START-->
+        
+        <!--COPYRIGHTS START-->
+    </div>
+    <!--KF KODE WRAPPER WRAP END-->
+    <!--Bootstrap core JavaScript-->
+    <script src="~/content/Users/js/jquery.js"></script>
+    <script src="~/content/Users/js/bootstrap.min.js"></script>
+    <!--Bx-Slider JavaScript-->
+    <script src="~/content/Users/js/jquery.bxslider.min.js"></script>
+    <!--Owl Carousel JavaScript-->
+    <script src="~/content/Users/js/owl.carousel.min.js"></script>
+    <!--Pretty Photo JavaScript-->
+    <script src="~/content/Users/js/jquery.prettyPhoto.js"></script>
+    <!--Dl Menu Script-->
+    <script src="~/content/Users/js/dl-menu/modernizr.custom.js"></script>
+    <!--Dl Menu Script-->
+    <script src="~/content/Users/js/dl-menu/jquery.dlmenu.js"></script>
+    <!--Dl Menu Script-->
+    <script src="~/content/Users/js/dl-menu/modernizr.custom.js"></script>
+    <!--Dl Menu Script-->
+    <script src="~/content/Users/js/dl-menu/jquery.dlmenu.js"></script>
+    <!--Full Calender JavaScript-->
+    <script src="~/content/Users/js/moment.min.js"></script>
+    <script src="~/content/Users/js/fullcalendar.min.js"></script>
+    <script src="~/content/Users/js/jquery.downCount.js"></script>
+    <!--Image Filterable JavaScript-->
+    <script src="~/content/Users/js/jquery-filterable.js"></script>
+    <!--Accordian JavaScript-->
+    <script src="~/content/Users/js/jquery.accordion.js"></script>
+    <!--Number Count (Waypoints) JavaScript-->
+    <script src="~/content/Users/js/waypoints-min.js"></script>
+    <!--v ticker-->
+    <script src="~/content/Users/js/jquery.vticker.min.js"></script>
+    <!--select menu-->
+    <script src="~/content/Users/js/jquery.selectric.min.js"></script>
+    <!--Side Menu-->
+    <script src="~/content/Users/js/jquery.sidr.min.js"></script>
+    <!--Custom JavaScript-->
+    <script src="~/content/Users/js/custom.js"></script>
+
+
+</body>
+
+<!-- Mirrored from kodeforest.net/html/uoe/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Apr 2022 12:19:38 GMT -->
+</html>

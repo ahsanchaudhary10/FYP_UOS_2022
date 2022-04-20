@@ -11,6 +11,73 @@ namespace FYP_UOS_2022.Controllers
     public class HomeController : Controller
     {
         Db_Entities db = new Db_Entities();
+        public ActionResult IndexUser()
+        {
+            return View();
+        } 
+        public ActionResult aboutus()
+        {
+            return View();
+        }
+        public ActionResult gallery()
+        {
+            return View();
+        }
+        public ActionResult Signin(string Email,string password, string type )
+        {
+            if (type == "Exam")
+            {
+                var result = db.Examcells.Where(x => x.Examcell_Uniqueid == Email && x.Examcellpassword == password).FirstOrDefault();
+                if (result != null)
+                {
+                    BaseHelper.CurrentExamCell = result;
+                    return RedirectToAction("ExamCellIndex");
+                }
+                TempData["error"] = "Invalid ID And Passowrd";
+                return RedirectToAction("IndexUser");
+            }
+            else if (type == "Supervisor")
+            {
+                var result = db.Supervisors.Where(x => x.Supervisor_Email == Email && x.Supervisor_Password == password).FirstOrDefault();
+                if (result != null)
+                {
+                    BaseHelper.CurrentSupervisor = result;
+                    return RedirectToAction("SupervisorIndex");
+                }
+
+                TempData["error"] = "Invalid ID And Passowrd";
+                return RedirectToAction("IndexUser");
+
+            }
+            else if (type == "PMO")
+            {
+                var result = db.PMOes.Where(x => x.PMO_Email == Email && x.PMO_password == password).FirstOrDefault();
+                if (result != null)
+                {
+                    BaseHelper.CurrentPMO = result;
+                    return RedirectToAction("PMOIndex");
+                }
+
+                TempData["error"] = "Invalid ID And Passowrd";
+                return RedirectToAction("IndexUser");
+            }
+            else if (type == "Student")
+            {
+                var result = db.Students.Where(x => x.Student_Email == Email && x.Student_Password == password).FirstOrDefault();
+                if (result != null)
+                {
+                    BaseHelper.CurrentStudent = result;
+                    return RedirectToAction("index", "StudentLink");
+                }
+                TempData["error"] = "Invalid ID And Passowrd";
+                return RedirectToAction("IndexUser");
+            }
+
+            
+
+
+            return RedirectToAction("IndexUser");
+        }
         public ActionResult ExamCellIndex()
         {
             return View();
@@ -38,7 +105,7 @@ namespace FYP_UOS_2022.Controllers
             BaseHelper.CurrentStudent = null;
             BaseHelper.CurrentPMO = null;
             BaseHelper.CurrentSupervisor = null;
-            return RedirectToAction("StudentSignin");
+            return RedirectToAction("IndexUser");
         } 
         public ActionResult LogoutPMO()
         {
@@ -46,21 +113,21 @@ namespace FYP_UOS_2022.Controllers
             BaseHelper.CurrentStudent = null;
             BaseHelper.CurrentPMO = null;
             BaseHelper.CurrentSupervisor = null;
-            return RedirectToAction("PMOSignin");
+            return RedirectToAction("IndexUser");
         } public ActionResult LogoutSuperVisor()
         {
             BaseHelper.CurrentExamCell = null;
             BaseHelper.CurrentStudent = null;
             BaseHelper.CurrentPMO = null;
             BaseHelper.CurrentSupervisor = null;
-            return RedirectToAction("SuperVisorSignin");
+            return RedirectToAction("IndexUser");
         } public ActionResult LogoutExam()
         {
             BaseHelper.CurrentExamCell = null;
             BaseHelper.CurrentStudent = null;
             BaseHelper.CurrentPMO = null;
             BaseHelper.CurrentSupervisor = null;
-            return RedirectToAction("ExamSignin");
+            return RedirectToAction("IndexUser");
         }
         public ActionResult StudentSignin()
         {
